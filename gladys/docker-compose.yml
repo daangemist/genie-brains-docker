@@ -1,0 +1,25 @@
+
+db:
+  image: mariadb:latest
+  environment:
+    MYSQL_DATABASE: gladys
+    MYSQL_ROOT_PASSWORD: not-secure
+  ports:
+    - "3306:3306"
+  volumes:
+    - ./data:/var/lib/mysql
+
+gladys:
+  image: gladysproject/gladys:latest
+  environment:
+    ENVIRONMENT: development
+    MYSQL_HOST: db
+    MYSQL_USER: root
+    MYSQL_PASSWORD: not-secure
+  ports:
+    - "80:8080"
+  links:
+    - db
+  volumes:
+    - ./start:/src/start
+  entrypoint: /src/start/start.sh
