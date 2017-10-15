@@ -14,6 +14,9 @@ environment variables to your own password.
 To start, run `docker-compose up`. To run the processes on the background, run `docker-compose up -d`.
 In the default configuration this will make Gladys available on port 80.
 
+You may need to restart the containers with `docker-compose restart` after the
+first time, because mysql needs to initialize, and gladys is then unable to connect.
+
 ![Gladys](https://raw.githubusercontent.com/matueranet/genie-brains-docker/master/gladys/gladys.png)
 
 ## Configuration
@@ -24,4 +27,4 @@ In the welcome screen, create your admin account.
 
 Navigate to _Parameters_ (can be found at the bottom of the left sidebar). Then open _Security_,
 this will display the _Gladys API tokens_. In order to be able to use Gladys with genie-router,
-create an API key here, and configure it in the genie-router config.
+create an API token here, and configure it in the genie-router config.
